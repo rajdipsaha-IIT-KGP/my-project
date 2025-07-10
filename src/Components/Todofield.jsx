@@ -134,6 +134,11 @@ const Todofield = () => {
       Done
     </span>
   )}
+  {!item.completed && (
+    <span className="ml-2 bg-red-500 text-white text-xs font-semibold px-2 py-0.5 rounded-full">
+      Due
+    </span>
+  )}
 </div>
 
               <button
