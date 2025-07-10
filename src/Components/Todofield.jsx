@@ -45,6 +45,11 @@ const Todofield = () => {
   }
 
   const clearAll = () => {
+    if(todoArray.length === 0)
+    {
+      toast("Already cleared all ToDos!")
+      return;
+    }
     setTodoArray([])
     toast.info('All tasks cleared!')
   }
