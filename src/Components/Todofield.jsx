@@ -13,7 +13,9 @@ const Todofield = () => {
   const workCompleted = todoArray.filter(item=>{
    return item.completed === true;
   }).length;
-  let percentage =( workCompleted/totalWork)*100;
+  let percentage =(workCompleted/totalWork)*100;
+  if(todoArray.length === 0)
+    percentage = 0;
   const handleCheckToggle = (indexToCheck) => {
     setTodoArray(
       todoArray.map((item, index) =>
