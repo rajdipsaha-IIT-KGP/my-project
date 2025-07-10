@@ -4,8 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons'
 import 'react-toastify/dist/ReactToastify.css'
 
-// ✅ Poppins font via CDN in index.html is assumed:
-// <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
 const Todofield = () => {
   const [inputChange, setInputChange] = useState('')
