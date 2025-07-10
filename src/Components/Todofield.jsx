@@ -94,28 +94,29 @@ const Todofield = () => {
               key={index}
               className="flex items-center justify-between bg-gray-700 p-3 rounded-lg shadow hover:bg-gray-600 hover:scale-[1.01] transition-all duration-300"
             >
-              <div className="flex items-center gap-3 ">
-                <input
-                  type="checkbox"
-                  checked={item.completed}
-                  onChange={() => handleCheckToggle(index)}
-                  className="w-5 h-5 accent-green-500 cursor-pointer"
-                />
-                <span
-                  className={`text-lg ${
-                    item.completed
-                      ? 'line-through text-gray-400'
-                      : 'text-white font-bold'
-                  }`}
-                >
-                  {item.text}
-                </span>
-                {item.completed && (
-                  <span className="text-sm text-green-400 font-semibold ml-2">
-                     Done
-                  </span>
-                )}
-              </div>
+             <div className="flex items-center gap-3">
+  <input
+    type="checkbox"
+    checked={item.completed}
+    onChange={() => handleCheckToggle(index)}
+    className="w-5 h-5 accent-green-500 cursor-pointer"
+  />
+  <span
+    className={`text-lg ${
+      item.completed
+        ? 'line-through text-gray-400'
+        : 'text-white font-bold'
+    }`}
+  >
+    {item.text}
+  </span>
+  {item.completed && (
+    <span className="ml-2 bg-green-500 text-white text-xs font-semibold px-2 py-0.5 rounded-full">
+      Done
+    </span>
+  )}
+</div>
+
               <button
                 onClick={() => handleDelete(index)}
                 className="text-red-400 hover:text-red-600 transition cursor-pointer"
