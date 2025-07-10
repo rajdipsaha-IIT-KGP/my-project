@@ -3,12 +3,17 @@ import { ToastContainer, toast } from 'react-toastify'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons'
 import 'react-toastify/dist/ReactToastify.css'
-
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
 const Todofield = () => {
   const [inputChange, setInputChange] = useState('')
   const [todoArray, setTodoArray] = useState([])
-
+  const totalWork = todoArray.length;
+  const workCompleted = todoArray.filter(item=>{
+   return item.completed === true;
+  }).length;
+  let percentage =( workCompleted/totalWork)*100;
   const handleCheckToggle = (indexToCheck) => {
     setTodoArray(
       todoArray.map((item, index) =>
@@ -86,6 +91,20 @@ const Todofield = () => {
             Clear All
           </button>
         </div>
+{/* Progress Circle */}
+<div className="w-24 h-24 mx-auto mt-6">
+  <CircularProgressbar
+    value={percentage}
+    text={`${Math.round(percentage)}%`}
+    styles={buildStyles({
+      textSize: '16px',
+      pathColor: '#10b981',        
+      textColor: '#ffffff',        
+      trailColor: '#374151',       
+      backgroundColor: '#1f2937',  
+    })}
+  />
+</div>
 
         {/* Todo List */}
         <ul className="mt-6 space-y-2 transition-all duration-300 ease-in-out">
