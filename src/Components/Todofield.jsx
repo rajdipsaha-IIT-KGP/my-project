@@ -6,13 +6,15 @@ import 'react-toastify/dist/ReactToastify.css'
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 const Todofield = () => {  
   const [inputChange, setInputChange] = useState('')
   const [todoArray, setTodoArray] = useState([])
   const [editIndex, setEditIndex] = useState(null);
   const [editValue, setEditValue] = useState('');
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-
+  const navigate = useNavigate()
   const totalWork = todoArray.length;
   const workCompleted = todoArray.filter(item=>{
    return item.completed === true;
@@ -109,7 +111,9 @@ useEffect(() => {
       Sign In
     </button>
     <hr className="border-t border-gray-600 my-1 mx-2" />
-    <button className="flex justify-center w-full text-center px-4 py-2 hover:bg-gray-700 cursor-pointer">
+    <button className="flex justify-center w-full text-center px-4 py-2 hover:bg-gray-700 cursor-pointer" onClick={()=>{
+      navigate('/signup')
+    }}>
       Sign Up
     </button>
     <hr className="border-t border-gray-600 my-1 mx-2" />
@@ -222,7 +226,7 @@ useEffect(() => {
         </ul>
       </div>
      {isEditModalOpen && (
-  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+  <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center z-50">
     <div className="bg-gray-800 text-white p-6 rounded-xl w-full max-w-md shadow-lg">
       <h2 className="text-xl font-semibold mb-4">Edit Todo</h2>
       <input
